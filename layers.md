@@ -7,10 +7,23 @@
   - email client communication with email server - SMTP likely along with POP or IMAP
   - web browser communication with web server
   - application for transferring files - FTP likely
-  - HTTP
+  - HTTP - primary protocol for communication on the web
 
-**HTTP**
-- primary protocol used for communicating on the web
+  **Web**
+  - Internet is a network of networks. It can be thought of as the infrastructure that enables inter-network communication, both in terms of the physical network and the lower level protocols that control its use.
+  - The world wide web or web (in short) is a service that can be accessed via the internet. It is a vast information system comprised of resources which are navigable by means of a URL (Uniform Resource Locator). HTTP is close tied to the web. It is the primary means by which applications interact with the resources which make up the web.
+  - Uniformity was required for the system of the web which is vast
+    - uniformity in how resources were structured so that they could be correctly rendered for viewing (HTML)
+      - structure text documents using headings, paragraphs, lists etc. With hypertext that makes the text a link from one resource to another
+    - uniformity in how resources were addressed so that they can be easily located (URI)
+      - URI is a string of characters which identifies a particular resource. It is part of a system by which resources should be uniformly addressed on the web. Similar to URL but different
+    - uniformity in the way a request for a particular resource was made and the way in which that request was responded to (HTTP)
+  **HTTP**
+  - primary protocol used for communicating on the web
+  - set of rules which provide uniformity to the way resources on the web are transferred between applications
+  - protocol that serve as a link between applications and the transfer of hypertext documents
+  - its an agreement or message format of how machines communicate with each other. Simple model where client makes a request to a server and waits for a response. Hence its referred to as a request response protocol.
+
 
 # Transport Layer
 - 2 main uses / features
