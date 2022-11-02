@@ -153,3 +153,54 @@ Some techniques used on the client to make displaying dynamic content easy / sim
 
 **Same-origin policy**
 
+- permits unrestricted interaction between resources originating from the same origin, restricts certain interactions between resources originating from different origins
+- origin - combination of `scheme`, `host` and `port`
+  - `http://mysite.com/doc1` and `http://mysite.com/doc2` - same origin, scheme and host same - path different
+    - `https://mysite.com/doc1` - different origin from above - scheme is different `https`
+    - `http://mysite.com:4000/doc1` - different origin - different port
+    - `http://anothersite.com/doc1` - different origin - different host
+
+- Not all cross-origin requests are restricted. Following are typically allowed:
+  - linking redirects, form submissions to different origins
+  - embedding of resources from other origins such as scripts, css, stylesheets, images, other media, fonts, iframes etc.
+
+- Typically restricted are the following:
+  - cross-origin requests where resources are being accessed programmatically using APIs such as `XMLHttpRequest` or `fetch`
+
+- CORS - cross-origin resource sharing - developed for web-developers who have a legitimate need for making restricted kinds of cross-origin requests. 
+  - allows interactions that would normally be restricted cross-origin to take place
+  - adds new HTTP headers, which allow servers to serve resources cross-origin to certain specified origins
+
+#### Security Threats
+
+**Session Hijacking**
+
+- session keeps HTTP stateful, uses session id as the unique token to identify each session
+- session id - random string and comes in form of a cookie stored on the computer
+- if attacker gets session id, both attacket and user now share the same session and both can access the web-app.
+  - attacker accessing the session without even knowing username or password and user doesnt even get to know
+
+  **Counter Measures**
+  - resetting sessions
+    - a successful login makes old session id invalid and useless
+    - websites implement this by making users authenticate when entering sensitive area like charging a credit card, deleting account etc.
+  - expiration time on sessions
+    - helps by not giving attacker infinite time to pose as the real user
+    - example, 30 mins - gives attacker a narrow window to access the app
+  - HTTPS - minimise the chance that attacker can get to the session id
+
+**Cross-Site Scripting (XSS)**
+
+- when user is allowed to enter HTML or JavaScript that ends up beings displayed by the site directly
+  - example - forms to add comments
+- its a normal HTML `<textarea>`, users can input anything including raw HTML and JavaScript and submit to server
+- if server doesn't do any sanitization of input
+  - browser will interpret HTML or JavaScript and execute, and alert message will up
+  - attackers can craft malicious HTML or JavaScript which can be destructive for server as well as future visitors
+    - example, attacker can use JavaScript to grab session id of every future visitor and come back and assume their identity
+    - this will by-pass same-origin policy because the code lives on the site
+
+  **Counter Measures**
+  - sanitize user input - eliminating problematic input like `<script>` tags or by disallowing HTML and JavaScript input altogether
+  - escape all user input data when displaying it. If HTML or JavaScript should be allowed, then they must be escaped when printing so that the browser does not interpret it as code
+
