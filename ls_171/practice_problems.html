@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>practice_problems.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<ol>
+<li><strong>What is a network?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+At a basic level, a network is two devices connected in a way that they can communicate or echange data. It can be two computers connected directly using a LAN cable and configured to form a distinct network. It can be a LAN (Local Area Network) where multiple devices are connected via a hub or a switch or it can be as huge and vast as the internet which is a network of networks spreading across the world.</p>
+<ol start="2">
+<li><strong>What is the Internet?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+Internet is essentially a network of networks. In a LAN a small number of devices are connected. The scope of communications is limited to the devices connected to the network hub or switch, ie they are local. Routers enable communication between different networks. Within a LAN they act as gateways into and out of the network. Internet can be imagined as a vast number of these networks connected together. In between of all the sub-networks are systems of routers that direct network traffic. Internet spans across the world and is a vast and complex network.</p>
+<ol start="3">
+<li><strong>Is the Internet the same thing as a network?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+Internet is a network in itself. However, all networks are not the internet. A network can be as small as two devices connected directly to each other or a group of devices connected in a local area or as vast as the internet which spans across the globe.</p>
+<ol start="4">
+<li><strong>What is WEB (world wide web)</strong></li>
+</ol>
+<p><strong>Answer</strong>
+The world wide web or web is a service that can be accessed via the internet. It is a vast information system comprised of resources which are navigable by means of a URL (Uniform Resource Locator). Uniformity is required for the web as it is a vast system which is achieved by the following:</p>
+<ul>
+<li>uniformity in how resources are structured so that they can be rendered properly for viewing (HTML). HTML structures documents using headings, paragraphs, lists etc. Hypertexts that make texts a link from one resource to another</li>
+<li>uniformity in how resources are addressed so that they can be easily located (URI). URI is a stfing of characters which identifies a particular resource.</li>
+<li>uniformity in the way a request is made and the response to that request (HTTP).</li>
+</ul>
+<ol start="5">
+<li><strong>What is the difference between network, Internet, and WEB?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<ol start="6">
+<li><strong>What are LAN and WLAN?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>LAN or local area network is a network of multiple computers or devices connected via hub or switch. The devices are connected via network cables.</p>
+<p>When a wireless hub or switch is used, the network is still comprised of local devices connected but in this case wirelessly which is referred to as WLAN or wireless local area network.</p>
+<p>The similarity is the scope of both these types of network is limited to the devices connected to the network hub or switch. They are local to one another.</p>
+<ol start="7">
+<li><strong>What is a protocol?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+A vast variety of devices can be connected to the internet ranging from phones, computers, printers, tablets, appliances etc. And these can all rely on hardware like hubs, switches, routers etc. from different makes and also there can be a vast variety of software they are running.</p>
+<p>Protocol refers to a set of rules that govern the exchange or transmission of data / messages between devices in a network. Protocols exist to provide uniformity in how the data is exchanged between devices and how it is structured so that it can be interpreted appropriately.</p>
+<p>There are many different protocols for network communication and they are in place for mainly two reasons:</p>
+<ul>
+<li>different protocols to address different aspects of  network communication</li>
+<li>differnt protocols to address same aspect of network communication but in different ways or for specific use cases</li>
+</ul>
+<p>Few examples of protocols are - IP, TCP, UDP, TLS, HTTP, Ethernet, FTP, DNS etc.</p>
+<ol start="8">
+<li><strong>What is the role of protocols?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+Similar to 7</p>
+<ol start="9">
+<li><strong>Why there are many different types of protocols?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Mentioned in last part of 7</p>
+<ol start="10">
+<li><strong>What does it mean that a protocol is stateless?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>A protocol is said it to be stateless when the devices interacting / communicating via the protocol do not hang to information / data from one cycle of data transfer. In other words it can be said that each cycle, example in the case of HTTP every request/response cycle is treated as brand new entities and one request is not aware of any previous request / response.</p>
+<ol start="11">
+<li><strong>Explain briefly what are OCI and TCP/IP models? What is the purpose of having models like that?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+Network communication is a complex system. It can be broken down into layers which modularizes it and structures it. By doing so the entire system can be broken down and every particular layer provides with a clear information of what is happenening at that layer. Two most popular are OSI and TCP/IP models.</p>
+<p>The layers of the OSI model are as follows:</p>
+<p><code>Application</code>
+<code>Presentation</code>
+<code>Session</code>
+<code>Transport</code>
+<code>Network</code>
+<code>Data Link</code>
+<code>Physical</code></p>
+<p>The layers of the TCP/IP are as follows:</p>
+<p><code>Application</code>
+<code>Transport</code>
+<code>Internet</code>
+<code>Link</code></p>
+<p>They help modularize different levels of responsibility in the system.</p>
+<ol start="12">
+<li><strong>What is PDU? What is its role?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>PDU is an amount or block of data transferred over a network. Different protocols or protocol layers refer to PDUs by different names. Example, at Link layer, the PDU is an ethernet frame, at transport layer it can be a segment (TCP) or datagram (UDP) at the internet layer it is known as a pakcet.</p>
+<p>The PDU generally consists of the following:</p>
+<ul>
+<li>header</li>
+<li>data payload</li>
+<li>trailer or footer (in some cases)</li>
+</ul>
+<p>The header provides the metadata for the PDU, for example an IP packet will have the source and destination IP addresses which will be used to route the packet.</p>
+<p>Data payload is simply the data that is being transmitted. Data payload is the key to the way encapsulation is implemented. The entire PDU from a protocol at one layer is set as the data payload for a protocol at the layer below. Example, an HTTP request at Application layer will be the data payload for a TCP segement at the transport layer.</p>
+<ol start="13">
+<li><strong>What is Data Payload?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+Mentioned in 12</p>
+<ol start="14">
+<li><strong>What is the relationship between PDU and Data Payload?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+Mentioned in 12</p>
+<ol start="15">
+<li><strong>Explain How lower-level protocols work in general?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>In the physical layer, data is in the from bits (binary data) and these are converted to signals in order to be transmitted. The protocols at the lower level provide structure to this stream of bits separating them into different metadata (headers) and the data payload. The lower level protocols add logic to the stream of bits and also enables the transport of the data to the intended device.</p>
+<ol start="16">
+<li><strong>What is encapsulation in the context of networking?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>In the context of networking PDU (Protocol Data Unit) is a block of data transferred over a network. It consists of a header, data payload and sometimes a trailer or hooter. The header provides the metadata and the data payload is the actual data being transported.</p>
+<p>Now, the PDU from one layer becomes the data payload of the layer below it. This is the key to how encapsulation is implemented in networking. This creates a separation between layers. By way of encapsulation, protocols at one layer dont need to know how the protocols at other layers are being implemented. It can idependently complete its specific communication tast without information from other layers. Here, essentially a lower layer provides a service to the layer above it.</p>
+<p>Example, a TCP segment isn't concerned whether its data payload is an HTTP request, SMTP command or some other sort of application layer data. It just knows that it needs to encapsulate some data from the layer above and provide the result of this to the layer below.</p>
+<p>This separation and encapsulation provides a level abstraction which allows us to use different protocols without having to worry about other layers.</p>
+<p>Example, email client using SMTP, web browser using HTTP and file transfer program using FTP can all use TCP at transport layer to trasfer the application layer data.</p>
+<ol start="17">
+<li><strong>Why do we need encapsulation?</strong></li>
+</ol>
+<p><strong>Answer</strong>
+Mentioned in 16</p>
+<ol start="18">
+<li><strong>What are the characteristics of a physical network?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>The physical network comprises of the tabgible part of the network like networked devices, wires, cables, radio waves (wireless networks) etc. and are governed by physical laws and rules.</p>
+<p>These rules determine how data is transported from one place to another and is bound by physical and real world limitations. Data is transmitted in the binary form (bits). These are converted into signals depending on the medium like electrical signals, light signals or radio waves.</p>
+<p>The two main characteristics of the physical network are:</p>
+<ul>
+<li>
+<p>Latency -  This is the time taken for data to get from one point in a network to another. There are several types of delays that determine the overall latency of a network like propagation delay, transmission delay, processing delay, queuing delay. Last mile latency involves delay in getting the signal from ISPs to home / office network. Typically the hops within the core network is longer with less interruptions and at the network edge there are more frequent and shorter hops as data is directed down the network hierarchy to the sub network. RTT (round trip time) - length of time for a signal to be sent added to the length of time for ancknowledgement or response to be received.</p>
+</li>
+<li>
+<p>Bandwith - is the amount of data that can be sent in a particular unit of time (seconds). This varies and is not constant from the start point to end point. It is determined by the lowest amount at a particular point in the overall connection. This also depends on the physical layer and is governed by the physical laws.</p>
+</li>
+</ul>
+<ol start="19">
+<li><strong>How can we as developers deals with the limitations of physical network?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>The physical network comes with limitation due to physical laws and real world limitations. These limitations cannot be changed and developers must considering when building applications. To imporove performance of apps, the implementation must be made in the higher level protocols because the physical limitations cannot be changed or mitigated.</p>
+<p>(Must be elaborated further)</p>
+<ol start="20">
+<li><strong>What is Latency?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Mentioned in 18</p>
+<ol start="21">
+<li><strong>What is</strong> <strong>Bandwidth?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Mentioned in 18</p>
+<ol start="22">
+<li><strong>What are</strong> <strong>Network 'Hops'?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Data tranported over a network doesn't go directly from one point to another. There are several journeys between different nodes on the netowrk. These journeys are Network Hops. Nodes can be thought of as routers that process and forward the data to the next node.</p>
+<ol start="23">
+<li><strong>What is the relationship between network 'Hops' and latency?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Network hops are the several journeys between nodes (routers) that data takes when being transported from one point to another. Every node or router will further push or transmit the data along the network to the next node, and this results in some transmission delays along the network which adds to the overall latency. Also, at every node, the data is processed and trasnmitted further which further adds processing delay. Also, network devices such as routers which comprise the nodes can process a certain amount of data at one time. If there is more data than that then the data is queued or buffered. This accounts for some waiting time which is the queuing delay which also adds to the latency of the network.</p>
+<ol start="24">
+<li><strong>What is a switch and what is it used for?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Switch is networking device. It is used to connect multiple devices in a network. A switch operates on the link layer and has the ability to forward the data to the intended device.</p>
+<ol start="25">
+<li><strong>What is a hub and what is it used for?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Hub is a networking device. It is used to connect several devices in a network. Hub operates on the physical layer and the broadcasts the data to all devices (expect the one that is sending the data) of the network.</p>
+<ol start="26">
+<li><strong>What is a modem and what it is used for?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Modulator-demodulator. It is used to convert analouge signal of a phone line to a digital signal that can be processed by a computer and vice versa.</p>
+<ol start="27">
+<li><strong>What is a router and what is it used for?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>A router is a device that transmits data between different networks.</p>
+<ol start="28">
+<li><strong>What is the difference between a switch, hub, modem, and router?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>Previous answers</p>
+<ol start="29">
+<li><strong>How does the Internet works?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>(marked for later)</p>
+<ol start="30">
+<li><strong>What is a MAC address and what is its role in network communication?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>MAC address or media access control address is the physical identifier of every network device. MAC address is combination 6 two digit hexadecimal numbers and every device in the world has a unique MAC address. The MAC addresses are non logical and arbitrary, they are flat and not hierarchical. The MAC address is tied or physically burned in to a device.</p>
+<ol start="31">
+<li><strong>Give an overview of the Link/Data Layer</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>The link/data layer comes in between the physical layer and the internet layer. This layer is involving in provoding logic to the stream of bits from the physical layer. Here the PDU are called frames. The prevalent protocol at this layer is ethernet. The PDU headers contain the source MAC address and the destination MAC address amongst other things. The data payload is the PDU that is a packet from the layer about, internet layer. Frames also provide a footer field called Frame Check Sequence (FCS) which is a checksum where the data is used to generate an FCS using an algorithm. The receiving device uses the same algorithm to compute a value and if this is equal to the FCS then the integrity of the frame is verified. However, protocols at this layer don't provide retransmission of dropped frames. That responsobility is left to the higher level protocols.</p>
+<ol start="32">
+<li><strong>What is included in an Ethernet frame?</strong></li>
+</ol>
+<p><strong>Answer</strong></p>
+<p>PDU - Ethernet Frame</p>
+<ul>
+<li>Header - source MAC, destination MAC, length etc.</li>
+<li>Data payload - PDU from internet layer or frame</li>
+<li>Footer - FCS - Frame check sequence</li>
+</ul>
+<ol start="33">
+<li><strong>Give an overview of the Internet/Network Layer and it's role.</strong></li>
+</ol>
+<p><strong>Answer</strong>
+The main purpose of the internet/network layer is to transmit data between hosts on different networks. It helps inter-network communication.</p>
+<p>The prevalent protocol in this layer is IP (internet protocol). This uses IP addresses to communicate between different devices on different networks. The PDU here are called packets. Which consists of the source and destination IP addresses amongst other header fields and the data payload which is the PDU from the transport layer (segment). This layer provides for communication between different devices on the network however it does not provide for communication between applications or processes, the higher layers must be used for that.</p>
+<ol start="34">
+<li><strong>What is IP?</strong></li>
+<li><strong>What is IP address?</strong></li>
+<li><strong>What are the components of IP addresses?</strong></li>
+<li><strong>What is a packet in computer networking?</strong></li>
+<li><strong>Why do we need both MAC addresses and IP addresses?</strong></li>
+<li><strong>What is DNS and how does it work?</strong></li>
+<li><strong>How do port numbers and IP addresses work together?</strong></li>
+<li><strong>What is a checksum and what is it used for? How is it used?</strong></li>
+<li><strong>Give an overview of the Transport Layer.</strong></li>
+<li><strong>What are the fundamental elements of reliable protocol?</strong></li>
+<li><strong>What is pipe-lining protocols? What are the benefits of it?</strong></li>
+<li><strong>What is a network port?</strong></li>
+<li><strong>What is a port number?</strong></li>
+<li><strong>What is a network socket?</strong></li>
+<li><strong>Is TCP connectionless? Why?</strong></li>
+<li><strong>How do sockets on the implementation level relate to the idea of protocols being connectionless or connection-oriented?</strong></li>
+<li><strong>What are sockets on implementation and on a theoretical level?</strong></li>
+<li><strong>What does it mean that the protocol is connection-oriented?</strong></li>
+<li><strong>What is a three-way handshake? What is it used for?</strong></li>
+<li><strong>What are the advantages and disadvantages of a Three-way handshake?</strong></li>
+<li><strong>What are multiplexing and demultiplexing?</strong></li>
+<li><strong>How does TCP facilitate efficient data transfer?</strong></li>
+<li><strong>What is flow control? How does it work and why do we need it?</strong></li>
+<li><strong>How TCP prevents from receiver's buffer to get overloaded with data?</strong></li>
+<li><strong>What is congestion avoidance?</strong></li>
+<li><strong>What is network congestion?</strong></li>
+<li><strong>How do transport layer protocols enable communication between processes?</strong></li>
+<li><strong>Compare UDP and TCP. What are similarities, what are differences? What are pros and cons of using each one?</strong></li>
+<li><strong>What does it mean that network reliability is engineered?</strong></li>
+<li><strong>Give an overview of the Application Layer.</strong></li>
+<li><strong>What is HTML?</strong></li>
+<li><strong>What is a URL and what components does it have?</strong></li>
+<li><strong>What is a Query string? What it is used for?</strong></li>
+<li><strong>What URL encoding is and when it might be used for?</strong></li>
+<li><strong>Which characters have to be encoded in the URL? Why?</strong></li>
+<li><strong>What is www in the URL?</strong></li>
+<li><strong>What is URI?</strong></li>
+<li><strong>What is the difference between scheme and protocol in URL?</strong></li>
+<li><strong>What is HTTP?</strong></li>
+<li><strong>What is the role of HTTP?</strong></li>
+<li><strong>Explain the client-server model of web interactions, and the role of HTTP as a protocol within that model</strong></li>
+<li><strong>What are HTTP requests and responses? What are the components of each?</strong></li>
+<li><strong>Describe the HTTP request/response cycle.</strong></li>
+<li><strong>What is a</strong> s<strong>tate in the context of the 'web'?</strong></li>
+<li><strong>What is</strong> s<strong>tatelessness?</strong></li>
+<li><strong>What is a stateful Web Application?</strong></li>
+<li><strong>How can we mimic a stateful application?</strong></li>
+<li><strong>What is the difference between stateful and stateless applications?</strong></li>
+<li><strong>What does it mean that HTTP is a 'stateless protocol?</strong></li>
+<li><strong>Why HTTP makes it difficult to build a stateful application?</strong></li>
+<li><strong>How the idea that HTTP is a stateless protocol makes the web difficult to secure?</strong></li>
+<li><strong>What is a <code>GET</code> request and how does it work?</strong></li>
+<li><strong>How is <code>GET</code> request initiated?</strong></li>
+<li><strong>What is the HTTP response body and what do we use it for?</strong></li>
+<li><strong>What are the obligatory components of HTTP requests?</strong></li>
+<li><strong>What are the obligatory components of HTTP response?</strong></li>
+<li><strong>Which HTTP method would you use to send sensitive information to a server? Why?</strong></li>
+<li><strong>Compare <code>GET</code> and <code>POST</code> methods.</strong></li>
+<li><strong>Describe how would you send a <code>GET</code> request to a server and what would happen at each stage.</strong></li>
+<li><strong>Describe how would you send <code>POST</code> requests to a server and what is happening at each stage.</strong></li>
+<li><strong>What is a status code? What are some of the status codes types? What is the purpose of status codes?</strong></li>
+<li><strong>Imagine you are using an HTTP tool and you received a status code <code>302</code>. What does this status code mean and what happens if you receive a status code like that?</strong></li>
+<li><strong>How do modern web applications 'remember' state for each client?</strong></li>
+<li><strong>What role does AJAX play in displaying dynamic content in web applications?</strong></li>
+<li><strong>Describe some of the security threats and what can be done to minimize them?</strong></li>
+<li><strong>What is the Same Origin Policy? How it is used to mitigate certain security threats?</strong></li>
+<li><strong>What determines whether a request should use <code>GET</code> or <code>POST</code> as its HTTP method?</strong></li>
+<li><strong>What is the relationship between a scheme and a protocol in the context of a URL?</strong></li>
+<li><strong>In what ways can we pass information to the application server via the URL?</strong></li>
+<li><strong>How insecure HTTP message transfer looks like?</strong></li>
+<li><strong>What services does HTTP provide and what are the particular problems each of them aims to address?</strong></li>
+<li><strong>What is TLS Handshake?</strong></li>
+<li><strong>What is symmetric key encryption? What is it used for?</strong></li>
+<li><strong>What is asymmetric key encryption? What is it used for?</strong></li>
+<li><strong>Describe SSL/TLS encryption process.</strong></li>
+<li><strong>Describe the pros and cons of TLS Handshake</strong></li>
+<li><strong>Why do we need digital TLS/SSL certificates?</strong></li>
+<li><strong>What is it CA hierarchy and what is its role in providing secure message transfer?</strong></li>
+<li><strong>What is Cipher Suites and what do we need it for?</strong></li>
+<li><strong>How does TLS add a security layer to HTTP?</strong></li>
+<li><strong>Compare HTTP and HTTPS.</strong></li>
+<li><strong>Does HTTPS use other protocols?</strong></li>
+<li><strong>How do you know a website uses HTTPS?</strong></li>
+<li><strong>Give examples of some protocols that would be used when a user interacts with a banking website. What would be the role of those protocols?</strong></li>
+<li><strong>What is server-side infrastructure? What are its basic components?</strong></li>
+<li><strong>What is a server? What is its role?</strong></li>
+<li><strong>What are optimizations that developers can do in order to improve performance and minimize latency?</strong></li>
+</ol>
+
+</body>
+</html>
